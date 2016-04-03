@@ -6,9 +6,14 @@ public class LookInputModule : BaseInputModule {
 
     private PointerEventData lookEventData;
 
+    void Awake() {
+        // hide cursor
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
 	public override void Process ()
     {
-
 
         // get look data
         PointerEventData lookEventData = GetLookPointerEventData();
@@ -17,18 +22,15 @@ public class LookInputModule : BaseInputModule {
         HandlePointerExitAndEnter(lookEventData, lookEventData.pointerCurrentRaycast.gameObject);
 
         if (Input.GetButtonDown("Fire1")) {
-            Debug.Log("Edna....mode!");
             ExecuteEvents.Execute(lookEventData.pointerCurrentRaycast.gameObject, lookEventData, ExecuteEvents.pointerClickHandler);
         }
 
         if (Input.GetButtonDown("Submit")) {
-            Debug.Log("Submitted!!!!");
             ExecuteEvents.Execute(lookEventData.pointerCurrentRaycast.gameObject, lookEventData, ExecuteEvents.submitHandler);
         }
 
         // not sure about this <--------------------------
         if (Input.GetKeyDown("e")) {
-
             //ExecuteEvents.Execute(lookEventData.pointerCurrentRaycast.gameObject, new BaseEventData(EventSystem.current), "test");
             ExecuteEvents.ExecuteHierarchy(lookEventData.pointerCurrentRaycast.gameObject, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
         }
@@ -40,14 +42,8 @@ public class LookInputModule : BaseInputModule {
         }
 
 
-
         if (eventSystem.currentSelectedGameObject)
             Debug.Log("---->> " + eventSystem.currentSelectedGameObject.ToString());
-
-
-        // see if cursor is looking at an object
-
-
 
     }
 

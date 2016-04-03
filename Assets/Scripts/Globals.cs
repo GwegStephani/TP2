@@ -5,9 +5,12 @@ public enum Interaction {
     Clicked = 1
 }
 
-public static class Globals {
-
-    public static string MouseClicked = "Globals.MouseClicked";
-    public static string MouseOver = "Globals.MouseOver";
-
+public enum GameEvent {
+    None,
+    HoverTextShow,
+    HoverTextHide,
+    MouseClick,
+    MouseEnter,
+    MouseExit,
+    Test
 }

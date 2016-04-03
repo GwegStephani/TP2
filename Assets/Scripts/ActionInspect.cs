@@ -14,7 +14,7 @@ public class ActionInspect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //GetInput();
+        GetInput();
 	}
 
 
