@@ -14,23 +14,16 @@ public class ActionInspect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetInput();
+        //GetInput();
 	}
+
 
     private void GetInput() {
         float xRotation = CrossPlatformInputManager.GetAxis("Mouse X");
         float yRotation = CrossPlatformInputManager.GetAxis("Mouse Y");
 
-
-
-        //this.transform.Rotate(new Vector3(5, 0, 0));
-
-        this.transform.RotateAround(inspectCamera.transform.up, -xRotation);
-        this.transform.RotateAround(inspectCamera.transform.right, yRotation);
-
-        //this.transform.RotateAround(Camera.main.transform.up, -Mathf.Deg2Rad * yRotation * 10);
-        //this.transform.RotateAround(Camera.main.transform.right, Mathf.Deg2Rad * xRotation * 10);
-
+        this.transform.RotateAround(Vector3.up, -xRotation);
+        this.transform.RotateAround(Vector3.right, yRotation);
     }
 
     void Clicked(string option) {
@@ -39,8 +32,14 @@ public class ActionInspect : MonoBehaviour {
         // save original transform
         originalTransform = this.transform;
 
+
+        // find InspectObject script
+
         // find inspect camera
         this.inspectCamera = GameObject.Find("InspectCamera");
+
+        //this.inspectCamera.SendMessage("Click
+
 
         if (inspectCamera) {
 

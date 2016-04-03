@@ -35,15 +35,17 @@ public class Reticle : MonoBehaviour {
 
             if (Input.GetButtonDown("Fire1")) {
                 //Debug.Log("I was clicked");
-                //if (hitInfo.rigidbody)
-                //    hitInfo.rigidbody.AddForce(Camera.main.transform.forward * 1000f);
+                if (hitInfo.rigidbody)
+                    hitInfo.rigidbody.AddForce(Camera.main.transform.forward * 1000f);
                 
-                hitInfo.collider.SendMessage("Clicked", "test");
+                hitInfo.collider.SendMessage("Clicked", Globals.MouseClicked);
+
+
 
                 // test code
-                ExamineObject examObjectScript = GetComponent<ExamineObject>();
+                //ExamineObject examObjectScript = GetComponent<ExamineObject>();
                 
-                examObjectScript.Trigger(hitInfo.collider.gameObject);
+                //examObjectScript.Trigger(hitInfo.collider.gameObject);
                 // end of test code
 
                 
@@ -63,20 +65,14 @@ public class Reticle : MonoBehaviour {
     }
 
     void OnGUI() {
-        // draw image
+        // draw recticle image
         if (image != null) {
             GUI.DrawTexture(position, image);
         }
 
-        // do stuff
+        // reticle hit something
         if (hitInfo.collider) {
-
-            if (hitInfo.collider.name.Equals("Cube")) {
-
-
-                GUI.Label(new Rect((Screen.width - 60) / 2, (Screen.height - -20) / 2, 60, 50), "It's Legal - Push Me");
-            }
-
+            hitInfo.collider.SendMessage("Hover");
         }
 
 
