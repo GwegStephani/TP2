@@ -6,14 +6,18 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     GameObject _object;
 
+    public bool activateOnClick;
+    public bool activateOnTrigger;
     public Animation animation;
     public AudioClip audioActive;
     public AudioClip audioDenied;
-    public GameEvent eventDispath;
+    public GameEvent eventDispatch;
     public GameEvent eventTrigger;
     public string hoverText;
     public float resetTime;
     public string requiredItem;
+
+    private float timer;
 
 
 	// Use this for initialization
@@ -22,39 +26,91 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (this.resetTime > 0) {
+            this.timer -= Time.deltaTime;
+        }
+        else {
+            this.timer = 0;
+        }
+
+
 	}
 
-    public void OnPointerClick(PointerEventData eventData) {
-        Debug.Log("I was mouse clicked");
-        EventManager.TriggerEvent(GameEvent.Test, new Vector3(25.0f, 69.69f, -122.21f));
+    private void ActivateObject() {
+        // check if disabled
+        if (this.timer > 0)
+            return;
 
         // check if does have item
         if (this.requiredItem.Length > 0) {// && !Player.CheckHasItem(requiredItem)
-
+            
             if (this.audioDenied != null)
                 AudioSource.PlayClipAtPoint(this.audioDenied, this.transform.position);
             return;
         }
-
-
-
+        
         // play audio
         if (this.audioActive != null)
-            AudioSource.PlayClipAtPoint(this.audioDenied, this.transform.position);
-
+            AudioSource.PlayClipAtPoint(this.audioActive, this.transform.position);
+        
         // play animation
-
-        // trigger event
-        if (this.eventDispath != null && this.eventDispath != GameEvent.None) {
-            EventManager.TriggerEvent(this.eventDispath);
+        if (this.animation != null) {
+            this.animation.Play();
         }
-
+        
+        // trigger event
+        if (this.eventDispatch != null && this.eventDispatch != GameEvent.None) {
+            EventManager.TriggerEvent(this.eventDispatch);
+        }
+        
         // start reset timer
         if (this.resetTime > 0) {
-
+            this.timer = this.resetTime;
         }
+    }
 
 
+    void OnCollisionEnter(Collision collisionInfo) {
+        Debug.Log("I am OnCollisionEnter()");
+    }
+
+    void OnCollisionExit(Collision collisionInfo) {
+        Debug.Log("I am OnCollisionExit()");
+    }
+
+    void OnCollisionStay(Collision collisionInfo) {
+        Debug.Log("I am OnCollisionStay()");
+    }
+
+    void OnEnable() {
+        // register listeners
+        if (this.eventTrigger != null && this.eventTrigger != GameEvent.None)
+            EventManager.StartListening(this.eventTrigger, OnTriggerEvent);
+    }
+
+
+    void OnDisable() {
+        // unregister listeners
+        if (this.eventTrigger != null && this.eventTrigger != GameEvent.None)
+            EventManager.StopListening(this.eventTrigger, OnTriggerEvent);
+    }
+
+    void OnTriggerEnter(Collider other) {
+        // TODO need to add in what type to trigger on. by tag, name, player, etc
+        if (this.activateOnTrigger)
+            ActivateObject();
+    }
+
+    void OnTriggerExit(Collider other) {
+    }
+
+    void OnTriggerStay(Collider other) {
+    }
+
+    public void OnPointerClick(PointerEventData eventData) {
+        if (this.activateOnClick)
+            ActivateObject();
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
@@ -73,9 +129,11 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         Debug.Log("I was examined wuuut!");
     }
 
-    public void OnTriggerEvent(BaseEventData eventData) {
-        OnPointerClick(null);
+    public void OnTriggerEvent(object eventData) {
+        ActivateObject();
     }
+
+
 
 
 }

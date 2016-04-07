@@ -7,9 +7,7 @@ public class LookInputModule : BaseInputModule {
     private PointerEventData lookEventData;
 
     void Awake() {
-        // hide cursor
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
 	public override void Process ()

@@ -12,5 +12,6 @@ public enum GameEvent {
     MouseClick,
     MouseEnter,
     MouseExit,
-    Test
+    Test,
+    TestTrigger
 }
