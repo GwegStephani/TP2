@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, ISubmitHandler, IExamineHandler {
+public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, ISubmitHandler, IExamineHandler, ISelectHandler, IDeselectHandler {
 
     GameObject _object;
 
@@ -83,17 +83,43 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         Debug.Log("I am OnCollisionStay()");
     }
 
+    public void OnDeselect(BaseEventData eventData) {
+    }
+
+    void OnDisable() {
+        // unregister listeners
+        if (this.eventTrigger != null && this.eventTrigger != GameEvent.None)
+            EventManager.StopListening(this.eventTrigger, OnTriggerEvent);
+    }
+
     void OnEnable() {
         // register listeners
         if (this.eventTrigger != null && this.eventTrigger != GameEvent.None)
             EventManager.StartListening(this.eventTrigger, OnTriggerEvent);
     }
 
+    public void OnExamine(PointerEventData eventData) {
+        Debug.Log("I was examined wuuut!");
+    }
 
-    void OnDisable() {
-        // unregister listeners
-        if (this.eventTrigger != null && this.eventTrigger != GameEvent.None)
-            EventManager.StopListening(this.eventTrigger, OnTriggerEvent);
+    public void OnPointerClick(PointerEventData eventData) {
+        if (this.activateOnClick)
+            ActivateObject();
+    }
+    
+    public void OnPointerEnter(PointerEventData eventData) {
+        EventManager.TriggerEvent(GameEvent.HoverTextShow, this.hoverText);
+    }
+    
+    public void OnPointerExit(PointerEventData eventData) {
+        EventManager.TriggerEvent(GameEvent.HoverTextHide);
+    }
+
+    public void OnSelect(BaseEventData eventData) {
+    }
+
+    public void OnSubmit(BaseEventData eventData) {
+        Debug.Log("I was sumbitted?");
     }
 
     void OnTriggerEnter(Collider other) {
@@ -106,27 +132,6 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     }
 
     void OnTriggerStay(Collider other) {
-    }
-
-    public void OnPointerClick(PointerEventData eventData) {
-        if (this.activateOnClick)
-            ActivateObject();
-    }
-
-    public void OnPointerEnter(PointerEventData eventData) {
-        EventManager.TriggerEvent(GameEvent.HoverTextShow, this.hoverText);
-    }
-
-    public void OnPointerExit(PointerEventData eventData) {
-        EventManager.TriggerEvent(GameEvent.HoverTextHide);
-    }
-
-    public void OnSubmit(BaseEventData eventData) {
-        Debug.Log("I was sumbitted?");
-    }
-
-    public void OnExamine(PointerEventData eventData) {
-        Debug.Log("I was examined wuuut!");
     }
 
     public void OnTriggerEvent(object eventData) {

@@ -6,6 +6,8 @@ public class LookInputModule : BaseInputModule {
 
     private PointerEventData lookEventData;
 
+    public float maxDistance = 5.0f;
+
     void Awake() {
 
     }
@@ -16,10 +18,19 @@ public class LookInputModule : BaseInputModule {
         // get look data
         PointerEventData lookEventData = GetLookPointerEventData();
 
+        // if not within distance reset
+        if (lookEventData.pointerCurrentRaycast.distance > this.maxDistance) {
+            eventSystem.SetSelectedGameObject(null);
+            lookEventData.pointerCurrentRaycast = new RaycastResult();
+        }
+
         // trigger to object that it has been highlighted
         HandlePointerExitAndEnter(lookEventData, lookEventData.pointerCurrentRaycast.gameObject);
 
+
+        // handle inputs
         if (Input.GetButtonDown("Fire1")) {
+            eventSystem.SetSelectedGameObject(lookEventData.pointerCurrentRaycast.gameObject);
             ExecuteEvents.Execute(lookEventData.pointerCurrentRaycast.gameObject, lookEventData, ExecuteEvents.pointerClickHandler);
         }
 
