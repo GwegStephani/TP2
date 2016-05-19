@@ -50,10 +50,6 @@ public class LookInputModule : BaseInputModule {
             ExecuteEvents.Execute(lookEventData.pointerCurrentRaycast.gameObject, lookEventData, ActionExecuteEvents.examineHandler);
         }
 
-
-        if (eventSystem.currentSelectedGameObject)
-            Debug.Log("---->> " + eventSystem.currentSelectedGameObject.ToString());
-
     }
 
 

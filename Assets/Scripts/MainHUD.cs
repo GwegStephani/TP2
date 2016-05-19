@@ -4,6 +4,19 @@ using UnityEngine.UI;
 
 public class MainHUD : MonoBehaviour {
 
+    // UI Canvas for main canvas
+
+    // UI Canvas for menu/item
+
+    // UI Canvas for examin object
+
+
+    public Canvas mainCanvas;
+    public Canvas menuCanvas;
+    public Canvas ExamineCanvas;
+
+    private Canvas activeCanvas;
+
     public Text infoText;
 
 	// Use this for initialization
