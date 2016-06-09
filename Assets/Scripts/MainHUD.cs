@@ -34,13 +34,13 @@ public class MainHUD : MonoBehaviour {
 	}
 
     void OnEnable() {
-        EventManager.StartListening(GameEvent.HoverTextShow, ShowInfoText);
-        EventManager.StartListening(GameEvent.HoverTextHide, HideInfoText);
+        EventManager.StartListening(GameEvent.HoverTextShow.ToString(), ShowInfoText);
+        EventManager.StartListening(GameEvent.HoverTextHide.ToString(), HideInfoText);
     }
 
     void OnDisable() {
-        EventManager.StopListening(GameEvent.HoverTextShow, ShowInfoText);
-        EventManager.StopListening(GameEvent.HoverTextHide, HideInfoText);
+        EventManager.StopListening(GameEvent.HoverTextShow.ToString(), ShowInfoText);
+        EventManager.StopListening(GameEvent.HoverTextHide.ToString(), HideInfoText);
     }
 
     void ShowInfoText(object text) {

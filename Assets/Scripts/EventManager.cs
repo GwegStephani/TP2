@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 public class EventManager : MonoBehaviour {
 
-    private Dictionary <GameEvent, UnityEvent> eventDictionary;
-    private Dictionary <GameEvent, DataEvent> dataEventDictionary;
+    private Dictionary <string, UnityEvent> eventDictionary;
+    private Dictionary <string, DataEvent> dataEventDictionary;
 
     private static EventManager eventManager;
 
@@ -29,15 +29,15 @@ public class EventManager : MonoBehaviour {
 
     void Initialize() {
         if (eventDictionary == null) {
-            eventDictionary = new Dictionary<GameEvent, UnityEvent>();
+            eventDictionary = new Dictionary<string, UnityEvent>();
         }
 
         if (dataEventDictionary == null) {
-            dataEventDictionary = new Dictionary<GameEvent, DataEvent>();
+            dataEventDictionary = new Dictionary<string, DataEvent>();
         }
     }
 
-    public static void StartListening(GameEvent eventName, UnityAction listener) {
+    public static void StartListening(string eventName, UnityAction listener) {
         UnityEvent thisEvent = null;
 
         // try and find entry otherwise add it to the dictionary
@@ -51,7 +51,7 @@ public class EventManager : MonoBehaviour {
         }
     }
 
-    public static void StartListening(GameEvent eventName, UnityAction<object> listener) {
+    public static void StartListening(string eventName, UnityAction<object> listener) {
         DataEvent thisEvent = null;
 
         // try and find entry otherwise add it to the dictionary
@@ -66,7 +66,7 @@ public class EventManager : MonoBehaviour {
 
     }
 
-    public static void StopListening(GameEvent eventName, UnityAction listener) {
+    public static void StopListening(string eventName, UnityAction listener) {
         if (eventManager == null) return;
 
         UnityEvent thisEvent = null;
@@ -76,7 +76,7 @@ public class EventManager : MonoBehaviour {
         }
     }
 
-    public static void StopListening(GameEvent eventName, UnityAction<object> listener) {
+    public static void StopListening(string eventName, UnityAction<object> listener) {
         if (eventManager == null) return;
 
         DataEvent thisEvent = null;
@@ -87,7 +87,7 @@ public class EventManager : MonoBehaviour {
 
     }
 
-    public static void TriggerEvent(GameEvent eventName) {
+    public static void TriggerEvent(string eventName) {
         UnityEvent unitysEvent = null;
         DataEvent dataEvent = null;
 
@@ -100,7 +100,7 @@ public class EventManager : MonoBehaviour {
 
     }
 
-    public static void TriggerEvent(GameEvent eventName, object data) {
+    public static void TriggerEvent(string eventName, object data) {
         UnityEvent unitysEvent = null;
         DataEvent dataEvent = null;
 

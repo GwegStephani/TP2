@@ -11,8 +11,8 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public Animation animation;
     public AudioClip audioActive;
     public AudioClip audioDenied;
-    public GameEvent eventDispatch;
-    public GameEvent eventTrigger;
+    public string eventDispatch;
+    public string eventTrigger;
     public string hoverText;
     public float resetTime;
     public string requiredItem;
@@ -60,7 +60,7 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         }
         
         // trigger event
-        if (this.eventDispatch != null && this.eventDispatch != GameEvent.None) {
+        if (this.eventDispatch != null && this.eventDispatch.Length > 0) {
             EventManager.TriggerEvent(this.eventDispatch);
         }
         
@@ -88,13 +88,13 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     void OnDisable() {
         // unregister listeners
-        if (this.eventTrigger != null && this.eventTrigger != GameEvent.None)
+        if (this.eventTrigger != null && this.eventTrigger.Length > 0)
             EventManager.StopListening(this.eventTrigger, OnTriggerEvent);
     }
 
     void OnEnable() {
         // register listeners
-        if (this.eventTrigger != null && this.eventTrigger != GameEvent.None)
+        if (this.eventTrigger != null && this.eventTrigger.Length > 0)
             EventManager.StartListening(this.eventTrigger, OnTriggerEvent);
     }
 
@@ -108,11 +108,11 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     }
     
     public void OnPointerEnter(PointerEventData eventData) {
-        EventManager.TriggerEvent(GameEvent.HoverTextShow, this.hoverText);
+        EventManager.TriggerEvent(GameEvent.HoverTextShow.ToString(), this.hoverText);
     }
     
     public void OnPointerExit(PointerEventData eventData) {
-        EventManager.TriggerEvent(GameEvent.HoverTextHide);
+        EventManager.TriggerEvent(GameEvent.HoverTextHide.ToString());
     }
 
     public void OnSelect(BaseEventData eventData) {

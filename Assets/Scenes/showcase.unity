@@ -524,8 +524,8 @@ MonoBehaviour:
   animation: {fileID: 384367738}
   audioActive: {fileID: 8300000, guid: 6df9cde6a727d254f87aaf6cb52d7f8e, type: 3}
   audioDenied: {fileID: 0}
-  eventDispatch: 0
-  eventTrigger: 7
+  eventDispatch: 
+  eventTrigger: triggerblades
   hoverText: 
   resetTime: 0
   requiredItem: 
@@ -713,8 +713,8 @@ MonoBehaviour:
   animation: {fileID: 440367414}
   audioActive: {fileID: 8300000, guid: d3764649a00581242922054f3ec82fc3, type: 3}
   audioDenied: {fileID: 0}
-  eventDispatch: 8
-  eventTrigger: 0
+  eventDispatch: libraryshelf
+  eventTrigger: 
   hoverText: Red Button
   resetTime: 2
   requiredItem: 
@@ -1281,8 +1281,8 @@ MonoBehaviour:
   animation: {fileID: 1010825109}
   audioActive: {fileID: 8300000, guid: b711d0823b199fd46b1f6b8e6a789568, type: 3}
   audioDenied: {fileID: 0}
-  eventDispatch: 0
-  eventTrigger: 0
+  eventDispatch: 
+  eventTrigger: 
   hoverText: Door
   resetTime: 7
   requiredItem: 
@@ -1478,8 +1478,8 @@ MonoBehaviour:
   animation: {fileID: 1408926410}
   audioActive: {fileID: 8300000, guid: 6d62b6412f5935742ae638c74bf74250, type: 3}
   audioDenied: {fileID: 0}
-  eventDispatch: 0
-  eventTrigger: 8
+  eventDispatch: 
+  eventTrigger: libraryshelf
   hoverText: 
   resetTime: 0
   requiredItem: 
@@ -1651,8 +1651,8 @@ MonoBehaviour:
   animation: {fileID: 0}
   audioActive: {fileID: 0}
   audioDenied: {fileID: 0}
-  eventDispatch: 0
-  eventTrigger: 0
+  eventDispatch: 
+  eventTrigger: 
   hoverText: Moreau family portrait
   resetTime: 0
   requiredItem: 
@@ -2741,8 +2741,8 @@ MonoBehaviour:
   animation: {fileID: 0}
   audioActive: {fileID: 0}
   audioDenied: {fileID: 0}
-  eventDispatch: 7
-  eventTrigger: 0
+  eventDispatch: triggerblades
+  eventTrigger: 
   hoverText: 
   resetTime: 0
   requiredItem: 
