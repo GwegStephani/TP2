@@ -13,5 +13,11 @@ public enum GameEvent {
     MouseEnter,
     MouseExit,
     Test,
-    TestTrigger
+    TestTrigger,
+
+
+	// library events
+	LibraryBookcaseTrigger,
+	
+	// kitchen events
 }
