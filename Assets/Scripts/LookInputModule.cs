@@ -8,7 +8,7 @@ public class LookInputModule : BaseInputModule {
 
     public float maxDistance = 5.0f;
 
-    void Awake() {
+    protected override void Awake() {
 
     }
 

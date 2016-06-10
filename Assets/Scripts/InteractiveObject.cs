@@ -9,13 +9,13 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public bool activateOnClick;
     public bool activateOnTrigger;
     public Animation animation;
-    public AudioClip audioActive;
-    public AudioClip audioDenied;
+    public AudioClip[] audioActive;
+    public AudioClip[] audioDenied;
     public string eventDispatch;
     public string eventTrigger;
     public string hoverText;
     public float resetTime;
-    public string requiredItem;
+    public string requiredItemName;
 
     private float timer;
 
@@ -43,16 +43,24 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
             return;
 
         // check if does have item
-        if (this.requiredItem.Length > 0) {// && !Player.CheckHasItem(requiredItem)
-            
-            if (this.audioDenied != null)
-                AudioSource.PlayClipAtPoint(this.audioDenied, this.transform.position);
+        if (this.requiredItemName.Length > 0) {// && !Player.CheckHasItem(requiredItem)
+            // play random denied clip
+            if (this.audioDenied != null && this.audioDenied.Length > 0) {
+                AudioClip randomClip = this.audioDenied[Random.Range(0, this.audioDenied.Length)];
+                if (randomClip != null) {
+                    AudioSource.PlayClipAtPoint(randomClip, this.transform.position);
+                }
+            }
             return;
         }
         
         // play audio
-        if (this.audioActive != null)
-            AudioSource.PlayClipAtPoint(this.audioActive, this.transform.position);
+        if (this.audioActive != null && this.audioActive.Length > 0) {
+            AudioClip randomClip = this.audioActive[Random.Range(0, this.audioActive.Length)];
+            if (randomClip != null) {
+                AudioSource.PlayClipAtPoint(randomClip, this.transform.position);
+            }
+        }
         
         // play animation
         if (this.animation != null) {

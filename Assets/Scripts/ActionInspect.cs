@@ -22,8 +22,8 @@ public class ActionInspect : MonoBehaviour {
         float xRotation = CrossPlatformInputManager.GetAxis("Mouse X");
         float yRotation = CrossPlatformInputManager.GetAxis("Mouse Y");
 
-        this.transform.RotateAround(Vector3.up, -xRotation);
-        this.transform.RotateAround(Vector3.right, yRotation);
+        this.transform.Rotate(Vector3.up, -xRotation);
+        this.transform.Rotate(Vector3.right, yRotation);
     }
 
     void Clicked(string option) {

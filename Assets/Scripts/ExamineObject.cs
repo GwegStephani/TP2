@@ -31,8 +31,6 @@ public class ExamineObject : MonoBehaviour {
         if (uiCamera == null) { return; }
 
         //uiCamera.transform.forward.
-        int test = 20;
-
 
         // move object in front of camera
         

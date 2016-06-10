@@ -522,13 +522,14 @@ MonoBehaviour:
   activateOnClick: 0
   activateOnTrigger: 0
   animation: {fileID: 384367738}
-  audioActive: {fileID: 8300000, guid: 6df9cde6a727d254f87aaf6cb52d7f8e, type: 3}
-  audioDenied: {fileID: 0}
+  audioActive:
+  - {fileID: 8300000, guid: 6df9cde6a727d254f87aaf6cb52d7f8e, type: 3}
+  audioDenied: []
   eventDispatch: 
   eventTrigger: triggerblades
   hoverText: 
   resetTime: 0
-  requiredItem: 
+  requiredItemName: 
 --- !u!1 &438673793
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,13 +712,14 @@ MonoBehaviour:
   activateOnClick: 1
   activateOnTrigger: 0
   animation: {fileID: 440367414}
-  audioActive: {fileID: 8300000, guid: d3764649a00581242922054f3ec82fc3, type: 3}
-  audioDenied: {fileID: 0}
+  audioActive:
+  - {fileID: 8300000, guid: d3764649a00581242922054f3ec82fc3, type: 3}
+  audioDenied: []
   eventDispatch: libraryshelf
   eventTrigger: 
   hoverText: Red Button
   resetTime: 2
-  requiredItem: 
+  requiredItemName: 
 --- !u!1 &513254487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,13 +1281,14 @@ MonoBehaviour:
   activateOnClick: 1
   activateOnTrigger: 0
   animation: {fileID: 1010825109}
-  audioActive: {fileID: 8300000, guid: b711d0823b199fd46b1f6b8e6a789568, type: 3}
-  audioDenied: {fileID: 0}
+  audioActive:
+  - {fileID: 8300000, guid: b711d0823b199fd46b1f6b8e6a789568, type: 3}
+  audioDenied: []
   eventDispatch: 
   eventTrigger: 
   hoverText: Door
   resetTime: 7
-  requiredItem: 
+  requiredItemName: 
 --- !u!1 &1214590769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,13 +1479,14 @@ MonoBehaviour:
   activateOnClick: 0
   activateOnTrigger: 0
   animation: {fileID: 1408926410}
-  audioActive: {fileID: 8300000, guid: 6d62b6412f5935742ae638c74bf74250, type: 3}
-  audioDenied: {fileID: 0}
+  audioActive:
+  - {fileID: 8300000, guid: 6d62b6412f5935742ae638c74bf74250, type: 3}
+  audioDenied: []
   eventDispatch: 
   eventTrigger: libraryshelf
   hoverText: 
   resetTime: 0
-  requiredItem: 
+  requiredItemName: 
 --- !u!1 &1452936738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,13 +1653,13 @@ MonoBehaviour:
   activateOnClick: 0
   activateOnTrigger: 0
   animation: {fileID: 0}
-  audioActive: {fileID: 0}
-  audioDenied: {fileID: 0}
+  audioActive: []
+  audioDenied: []
   eventDispatch: 
   eventTrigger: 
   hoverText: Moreau family portrait
   resetTime: 0
-  requiredItem: 
+  requiredItemName: 
 --- !u!1 &1490822329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2739,13 +2743,13 @@ MonoBehaviour:
   activateOnClick: 0
   activateOnTrigger: 1
   animation: {fileID: 0}
-  audioActive: {fileID: 0}
-  audioDenied: {fileID: 0}
+  audioActive: []
+  audioDenied: []
   eventDispatch: triggerblades
   eventTrigger: 
   hoverText: 
   resetTime: 0
-  requiredItem: 
+  requiredItemName: 
 --- !u!1 &2106508434
 GameObject:
   m_ObjectHideFlags: 0
