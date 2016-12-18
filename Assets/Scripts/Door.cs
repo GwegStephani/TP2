@@ -18,9 +18,7 @@ public class Door : MonoBehaviour, IExamineHandler {
 
 	// Use this for initialization
 	void Start () {
-        
         doorCloseAngle = transform.eulerAngles.y;
-        Debug.Log(doorCloseAngle);
 	}
 
 	// Update is called once per frame
