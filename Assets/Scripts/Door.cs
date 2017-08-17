@@ -7,7 +7,9 @@ public class Door : MonoBehaviour, IExamineHandler {
     public float doorOpenAngle1;
     public float doorOpenAngle2;
     public AudioClip doorOpenSound;
+    public AudioClip doorLockedSound;
     public float doorTimer = 3.0f;
+    public bool isLocked = false;
     public float smooth = 2.0f;
     public Vector3 doorHinge;
 
@@ -68,29 +70,35 @@ public class Door : MonoBehaviour, IExamineHandler {
 
     public void OnExamine(PointerEventData eventData) {
         if (isOpen == false) {
-            isOpen = true;
-            timeLeft = doorTimer;
 
-            // get forward vector
-            Vector3 forwardVector = transform.forward;
+            if (isLocked == false) {
+                isOpen = true;
+                timeLeft = doorTimer;
 
-            // get hit vector
-            Vector3 hitVector = eventData.pointerCurrentRaycast.worldNormal;
+                // get forward vector
+                Vector3 forwardVector = transform.forward;
 
-            if (forwardVector.z * hitVector.z > 0.0f) {
-                targetAngle = doorCloseAngle + doorOpenAngle2;
-            } else {
-                targetAngle = doorCloseAngle + doorOpenAngle1;
-            }
+                // get hit vector
+                Vector3 hitVector = eventData.pointerCurrentRaycast.worldNormal;
 
-            // play audio
-            if (this.doorOpenSound != null) {
-                AudioClip audioClip = this.doorOpenSound;
-                if (audioClip != null) {
-                    AudioSource.PlayClipAtPoint(audioClip, this.transform.position);
+                if (forwardVector.z * hitVector.z > 0.0f) {
+                    targetAngle = doorCloseAngle + doorOpenAngle2;
+                } else {
+                    targetAngle = doorCloseAngle + doorOpenAngle1;
                 }
+
+                // play open audio
+                PlayAudio(this.doorOpenSound);
+            } else {
+                // play locked audio
+                PlayAudio(this.doorLockedSound);
             }
         }
+    }
 
+    private void PlayAudio(AudioClip audioClip) {
+        if (audioClip != null) {
+            AudioSource.PlayClipAtPoint(audioClip, this.transform.position);
+        }
     }
 }
