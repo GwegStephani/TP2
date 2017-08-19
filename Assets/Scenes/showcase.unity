@@ -632,7 +632,7 @@ Transform:
   - {fileID: 1875765859}
   - {fileID: 1452936739}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!111 &384367738
 Animation:
@@ -662,6 +662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateOnClick: 0
   activateOnTrigger: 0
+  canPickup: 0
   animation: {fileID: 384367738}
   audioActive:
   - {fileID: 8300000, guid: 6df9cde6a727d254f87aaf6cb52d7f8e, type: 3}
@@ -866,6 +867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateOnClick: 1
   activateOnTrigger: 0
+  canPickup: 0
   animation: {fileID: 440367414}
   audioActive:
   - {fileID: 8300000, guid: d3764649a00581242922054f3ec82fc3, type: 3}
@@ -972,6 +974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateOnClick: 0
   activateOnTrigger: 0
+  canPickup: 1
   animation: {fileID: 0}
   audioActive: []
   audioDenied: []
@@ -1223,7 +1226,7 @@ Transform:
   m_Children:
   - {fileID: 440367410}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &651218338
 GameObject:
@@ -1429,7 +1432,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426106, guid: 20657894a45cdc046ab85d18b08466a3, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20657894a45cdc046ab85d18b08466a3, type: 2}
@@ -1557,7 +1560,7 @@ Transform:
   m_Children:
   - {fileID: 944389851}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &986136757
 MonoBehaviour:
@@ -1607,7 +1610,7 @@ Transform:
   - {fileID: 1408926406}
   - {fileID: 2067997911}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1332361555
 Prefab:
@@ -1663,6 +1666,21 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1389663704 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+  m_PrefabInternal: {fileID: 1332361555}
+--- !u!114 &1389663705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1389663704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d09812638701d4c95922da3f302383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1408926405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,6 +1793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateOnClick: 0
   activateOnTrigger: 0
+  canPickup: 0
   animation: {fileID: 1408926410}
   audioActive:
   - {fileID: 8300000, guid: 6d62b6412f5935742ae638c74bf74250, type: 3}
@@ -1948,7 +1967,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.39998, z: 0.073029205}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1479123816
 MonoBehaviour:
@@ -1963,6 +1982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateOnClick: 0
   activateOnTrigger: 0
+  canPickup: 0
   animation: {fileID: 0}
   audioActive: []
   audioDenied: []
@@ -2501,7 +2521,7 @@ GameObject:
   - component: {fileID: 1616632094}
   - component: {fileID: 1616632093}
   m_Layer: 0
-  m_Name: Column4
+  m_Name: Column5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2572,7 +2592,7 @@ Transform:
   - {fileID: 2011032636}
   - {fileID: 575525342}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1649350841
 GameObject:
@@ -2786,7 +2806,7 @@ Transform:
   - {fileID: 1010825107}
   - {fileID: 1577887202}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1875765858
 GameObject:
@@ -3078,6 +3098,18 @@ Prefab:
       propertyPath: m_Name
       value: LockedDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 11415956, guid: 20657894a45cdc046ab85d18b08466a3, type: 2}
+      propertyPath: doorUnlockedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5aa95f43b914afb41ac759465fed6c3e, type: 3}
+    - target: {fileID: 11415956, guid: 20657894a45cdc046ab85d18b08466a3, type: 2}
+      propertyPath: isLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415956, guid: 20657894a45cdc046ab85d18b08466a3, type: 2}
+      propertyPath: requiredItemName
+      value: Green Key
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20657894a45cdc046ab85d18b08466a3, type: 2}
   m_IsPrefabParent: 0
@@ -3324,7 +3356,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2106065284
 GameObject:
@@ -3366,7 +3398,7 @@ Transform:
   m_LocalScale: {x: 1.0361426, y: 1, z: 0.69039685}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2106065287
 MonoBehaviour:
@@ -3381,6 +3413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateOnClick: 0
   activateOnTrigger: 1
+  canPickup: 0
   animation: {fileID: 0}
   audioActive: []
   audioDenied: []

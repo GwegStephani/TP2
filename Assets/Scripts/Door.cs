@@ -4,23 +4,30 @@ using UnityEngine.EventSystems;
 
 public class Door : MonoBehaviour, IExamineHandler {
 
+
     public float doorOpenAngle1;
     public float doorOpenAngle2;
     public AudioClip doorOpenSound;
     public AudioClip doorLockedSound;
+    public AudioClip doorUnlockedSound;
     public float doorTimer = 3.0f;
     public bool isLocked = false;
     public float smooth = 2.0f;
     public Vector3 doorHinge;
+    public string requiredItemName;
 
     private float doorCloseAngle = 0.0f;
     private bool isOpen = false;
     private float targetAngle = 0.0f;
     private float timeLeft = 0.0f;
+    private Inventory playerInventory;
 
 	// Use this for initialization
 	void Start () {
         doorCloseAngle = transform.eulerAngles.y;
+
+        // set reference to player inventory
+        playerInventory = GameObject.Find("FPSController").GetComponent<Inventory>();
 	}
 
 	// Update is called once per frame
@@ -89,6 +96,14 @@ public class Door : MonoBehaviour, IExamineHandler {
 
                 // play open audio
                 PlayAudio(this.doorOpenSound);
+
+            } else if (requiredItemName.Length > 0 && playerInventory.HasItem(requiredItemName)) {
+                // unlock door
+                isLocked = false;
+
+                // play unlock audio
+                PlayAudio(this.doorUnlockedSound);
+
             } else {
                 // play locked audio
                 PlayAudio(this.doorLockedSound);

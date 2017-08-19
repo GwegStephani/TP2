@@ -8,6 +8,7 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public bool activateOnClick;
     public bool activateOnTrigger;
+    public bool canPickup;
     public Animation animation;
     public AudioClip[] audioActive;
     public AudioClip[] audioDenied;
@@ -33,8 +34,6 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         else {
             this.timer = 0;
         }
-
-
 	}
 
     private void ActivateObject() {
@@ -108,6 +107,19 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnExamine(PointerEventData eventData) {
         Debug.Log("I was examined wuuut!");
+
+        // TODO this is a temporary version
+        if (this.canPickup == true) {
+            // find inventory
+            Inventory playerInvetory = GameObject.Find("FPSController").GetComponent<Inventory>();
+
+            // add to inventory
+            playerInvetory.AddItem(name);
+
+            // destroy object
+            Destroy(this.gameObject);
+        }
+        // TODO end temporary version
     }
 
     public void OnPointerClick(PointerEventData eventData) {
