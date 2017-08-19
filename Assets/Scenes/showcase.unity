@@ -889,6 +889,7 @@ GameObject:
   - component: {fileID: 457045374}
   - component: {fileID: 457045373}
   - component: {fileID: 457045377}
+  - component: {fileID: 457045378}
   m_Layer: 0
   m_Name: Green Key
   m_TagString: Untagged
@@ -983,6 +984,18 @@ MonoBehaviour:
   hoverText: Green Key
   resetTime: 0
   requiredItemName: 
+--- !u!114 &457045378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 457045372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed2bbd644dd3b849a30ba01432d0079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getKeySound: {fileID: 8300000, guid: 5b52fb00fc1bf2043b6352a06b10bdf8, type: 3}
 --- !u!1 &513254487
 GameObject:
   m_ObjectHideFlags: 0
