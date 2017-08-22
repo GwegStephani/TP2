@@ -9,6 +9,7 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public bool activateOnClick;
     public bool activateOnTrigger;
     public bool canPickup;
+    public bool canLoop;
     public Animation animation;
     public AudioClip[] audioActive;
     public AudioClip[] audioDenied;
@@ -18,8 +19,8 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public float resetTime;
     public string requiredItemName;
 
+    private bool isActivated;
     private float timer;
-
 
 	// Use this for initialization
 	void Start () {
@@ -28,11 +29,14 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 	// Update is called once per frame
 	void Update () {
 
-        if (this.resetTime > 0) {
+        if (this.timer > 0) {
             this.timer -= Time.deltaTime;
-        }
-        else {
+        } else {
             this.timer = 0;
+        }
+
+        if (this.isActivated && this.canLoop && this.timer == 0) {
+            ActivateObject();
         }
 	}
 
@@ -40,6 +44,9 @@ public class InteractiveObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         // check if disabled
         if (this.timer > 0)
             return;
+
+        // set to activated
+        this.isActivated = true;
 
         // check if does have item
         if (this.requiredItemName.Length > 0) {// && !Player.CheckHasItem(requiredItem)
