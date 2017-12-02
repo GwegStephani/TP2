@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class TwineManager : MonoBehaviour {
 
-    private static string TWINE_KEY_WORD_STORY_TITLE = "StoryTitle";
-    private static string TWINE_KEY_WORD_USER_SCRIPT = "UserScript";
-    private static string TWINE_KEY_WORD_USER_STYLESHEET = "UserStyleSheet";
-
+    private static string TWINE_KEY_WORD_STORY_TITLE = ":: StoryTitle";
+    private static string TWINE_KEY_WORD_USER_SCRIPT = ":: UserScript[script]";
+    private static string TWINE_KEY_WORD_USER_STYLESHEET = ":: UserStylesheet[stylesheet]";
 
     private TwineStory currentStory = null;
     private TwineNode currentNode = null;
@@ -43,17 +42,23 @@ public class TwineManager : MonoBehaviour {
 
             // iterate over each line
             foreach (string line in lines) {
-                ProcessLine(line);
+                // remove any goofy characters
+                ProcessLine(line.TrimEnd('\r'));
             }
         }
     }
 
     private void ProcessLine(string line) {
-        if (line.IndexOf(":: StoryTitle") == 0) {
+        // skip if length is zero
+        if (line.Length == 0) {
+            return;
+        }
+
+        if (line.IndexOf(TWINE_KEY_WORD_STORY_TITLE) == 0) {
             // found the story title
-        } else if (line.IndexOf(":: UserScript[script]") == 0) {
+        } else if (line.IndexOf(TWINE_KEY_WORD_USER_SCRIPT) == 0) {
             // found the user script section
-        } else if (line.IndexOf(":: UserStylesheet[stylesheet]") == 0) {
+        } else if (line.IndexOf(TWINE_KEY_WORD_USER_STYLESHEET) == 0) {
             // found the user style sheet section
         } else if (line.IndexOf(":: ") == 0) {
             // start of a new node
@@ -79,22 +84,13 @@ public class TwineManager : MonoBehaviour {
                 // add new TwineLine to the current node
                 currentNode.AddLine(currentLine);
 
-                /// helloo [[link]] more tet [[
-
-                // 2 choices
-                // 1 - it is just plain text
-                // 2 - it is a choice/link with text
-
-
+                // helloo [[link]] more tet [[
 
                 // set up phrase variables
                 string currentPhrase = "";
                 bool foundOpenBracket = false;
                 bool foundCloseBracket = false;
                 bool foundLink = false;
-
-                // remove any goofy characters
-                line = line.TrimEnd('\r');
 
                 // iterate over each character
                 foreach (char character in line) {
@@ -106,7 +102,6 @@ public class TwineManager : MonoBehaviour {
                         } else {
                             // start of a link
                             foundLink = true;
-
 
                             if (currentPhrase.Length > 0) {
                                 // create a new TwineLinePhrase
