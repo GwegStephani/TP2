@@ -3,18 +3,25 @@ using System.Collections.Generic;
 
 public class TwineNode {
 
-    private string title;
-    private string tags;
-    private ArrayList lines;
+    private string _title;
+    private string _tags;
+    private ArrayList _lines;
 
     public TwineNode(string title) {
-        lines = new ArrayList();
+        _lines = new ArrayList();
 
         // set the title
-        this.title = title;
+        _title = title;
     }
 
     public void AddLine(TwineLine line) {
-        lines.Add(line);
+        _lines.Add(line);
     }
+
+
+	public string title {
+		get {
+			return _title;
+		}
+	}
 }

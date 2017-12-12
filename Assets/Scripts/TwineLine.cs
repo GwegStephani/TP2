@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 public class TwineLine {
 
-    private ArrayList phrases;
+    private ArrayList _phrases;
 
     public TwineLine() {
-        phrases = new ArrayList();
+        _phrases = new ArrayList();
     }
 
     public void AddPhrase(TwineLinePhrase phrase) {
-        phrases.Add(phrase);
+        _phrases.Add(phrase);
     }
 }

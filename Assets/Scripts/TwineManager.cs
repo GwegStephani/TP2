@@ -8,16 +8,30 @@ public class TwineManager : MonoBehaviour {
     private static string TWINE_KEY_WORD_USER_SCRIPT = ":: UserScript[script]";
     private static string TWINE_KEY_WORD_USER_STYLESHEET = ":: UserStylesheet[stylesheet]";
 
-    private TwineStory currentStory = null;
-    private TwineNode currentNode = null;
+	private string[] _twineStories = {"sample_twine_file"};
+    private TwineStory _tempStory = null;
+    private TwineNode _tempNode = null;
+
+
+	private Dictionary<string, TwineStory> _loadedStories = new Dictionary<string, TwineStory>();
+	private TwineStory _currentStory = null;
+	private TwineNode _currentNode = null;
 
 	// Use this for initialization
 	void Start () {
         
-        LoadTwineFile("sample_twine_file");
+		// load all stories
+		foreach (string twineStoryID in _twineStories) {
+            TwineStory loadedStory = LoadTwineFile(twineStoryID);
+            _loadedStories.Add (twineStoryID, loadedStory);
+		}
 
+        // TEST
+        TwineNode xxx = StartTwine("sample_twine_file");
         int x = 30;
-
+        xxx = ProcessLink("killurself");
+        x = 20;
+        // TEST END
 	}
 	
 	// Update is called once per frame
@@ -25,13 +39,44 @@ public class TwineManager : MonoBehaviour {
 		
 	}
 
+	TwineNode StartTwine(string twineID) {
+        if (_loadedStories.ContainsKey(twineID)) {
+            // set current story
+            _currentStory = _loadedStories[twineID];
+            
+            // get first node and return it
+            if (_currentStory.getNodes().Count > 0) {
+                _currentNode = _currentStory.getNodes()[0] as TwineNode;
+                return _currentNode;
+            }
+        }
 
-    private void LoadTwineFile(string file) {
+        return null;
+    }
+
+
+    TwineNode ProcessLink(string linkID) {
+        if (linkID != null) {
+            foreach (TwineNode node in _currentStory.getNodes()) {
+                // found match
+                if (node.title.Contains (linkID)) {
+                    // set current node
+                    _currentNode = node;
+                    return _currentNode;
+                }
+            }
+        }
+
+        return null;
+    }
+
+
+    private TwineStory LoadTwineFile(string file) {
         // create new Twine Story object
         TwineStory newTwineStory = new TwineStory();
 
         // assign current story to the new created story
-        currentStory = newTwineStory;
+        _tempStory = newTwineStory;
 
         // load the twine file into memory
         TextAsset twineFile = Resources.Load<TextAsset>(file);
@@ -46,6 +91,8 @@ public class TwineManager : MonoBehaviour {
                 ProcessLine(line.TrimEnd('\r'));
             }
         }
+
+        return _tempStory;
     }
 
     private void ProcessLine(string line) {
@@ -69,20 +116,20 @@ public class TwineManager : MonoBehaviour {
             TwineNode newNode = new TwineNode(title);
 
             // assign the current node to the newly create node
-            currentNode = newNode;
+			_tempNode = newNode;
 
             // add node to the current story
-            currentStory.AddNode(newNode);
+            _tempStory.AddNode(newNode);
 
         } else {
             // do we have an active node
-            if (currentNode != null) {
+			if (_tempNode != null) {
 
                 // create new TwineLine object
                 TwineLine currentLine = new TwineLine();
 
                 // add new TwineLine to the current node
-                currentNode.AddLine(currentLine);
+				_tempNode.AddLine(currentLine);
 
                 // helloo [[link]] more tet [[
 

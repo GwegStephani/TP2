@@ -3,13 +3,17 @@ using System.Collections.Generic;
 
 public class TwineStory {
 
-    ArrayList twineNodes;
+    private ArrayList _twineNodes;
 
     public TwineStory() {
-        twineNodes = new ArrayList();
+        _twineNodes = new ArrayList();
     }
 
     public void AddNode(TwineNode node) {
-        twineNodes.Add(node);
+        _twineNodes.Add(node);
     }
+
+	public ArrayList getNodes() {
+		return _twineNodes;
+	}
 }
