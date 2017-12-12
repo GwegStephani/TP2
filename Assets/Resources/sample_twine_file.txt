@@ -1,0 +1,31 @@
+:: StoryTitle
+Sample TP2 Story
+
+:: UserScript[script]
+
+
+:: UserStylesheet[stylesheet]
+
+
+:: start[tag [[tag]] --this-is-a-kill]
+What do you want to do?
+[[Kick rocks|rocks]]
+[["You'll do nuthin'!"|nothing]]
+[[killurself]] 
+
+:: rocks
+Ok then rocks it is
+
+:: nothing
+Fine go away!
+
+:: newstart
+This is a kill a new one [[yus]]
+Here is a [[ break
+Here is another ]] break
+
+:: yus[alo?]
+aww yeah
+
+:: killurself
+Wipe yoself off...you dead.
