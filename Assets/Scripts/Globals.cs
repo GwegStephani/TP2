@@ -7,13 +7,12 @@ public enum Interaction {
 
 public enum GameEvent {
     None,
+    CanvasChange,
     HoverTextShow,
     HoverTextHide,
     MouseClick,
     MouseEnter,
     MouseExit,
-    Test,
-    TestTrigger,
 
 
 	// library events
