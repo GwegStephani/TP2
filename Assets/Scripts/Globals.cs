@@ -7,7 +7,8 @@ public enum Interaction {
 
 public enum GameEvent {
     None,
-    CanvasChange,
+    CanvasChangeDefault,
+    CanvasChangeConvo,
     HoverTextShow,
     HoverTextHide,
     MouseClick,

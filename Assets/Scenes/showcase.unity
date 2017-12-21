@@ -3810,7 +3810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a86c6fc109e25a4697051f156b6ba71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCanvas: {fileID: 0}
+  mainCanvas: {fileID: 944389850}
+  conversationCanvas: {fileID: 299870312}
   menuCanvas: {fileID: 0}
   ExamineCanvas: {fileID: 0}
   infoText: {fileID: 1491205228}
@@ -6511,7 +6512,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 323.00003, y: 0}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0}
   m_SizeDelta: {x: -323, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1799506636
@@ -6775,7 +6776,7 @@ MonoBehaviour:
   animation: {fileID: 0}
   audioActive: []
   audioDenied: []
-  eventDispatch: 
+  eventDispatch: CanvasChangeConvo
   eventTrigger: 
   hoverText: 
   resetTime: 0
